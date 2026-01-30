@@ -1,8 +1,8 @@
 # Course Retrospective Assignment
 
 ### Name: Jocelyn Bendoy  
-### Course: Bachelor of Science in Information System  
-### Section: BSIS3-B
+### Course: Bachelor of Science in Information System 3
+### Section: B
 
 ---
 
@@ -16,7 +16,6 @@
 ## 2. What went wrong / Challenges
 - During group projects, there were moments of **miscommunication** and uneven task distribution.
 - I struggled with **time management** when multiple subjects had overlapping deadlines.
-- I struggled that the point is 
 
 ---
 
@@ -29,7 +28,7 @@
 ---
 
 ## 4. Areas for Improvement
-- I want to be more **active in team discussions** and contribute ideas more confidently.
+- I want to be more **communication** and contribute ideas more confidently.
 - I aim to improve my **time management** by starting tasks earlier.
 
 ---

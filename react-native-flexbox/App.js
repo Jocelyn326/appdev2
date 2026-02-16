@@ -1,7 +1,7 @@
-import AlignSelfLayout from './components/AlignSelfLayout'; 
+import AlignContentLayout from './components/AlignContentLayout';
 
 const App = () => {
-  return <AlignSelfLayout />;
+  return <AlignContentLayout />;
 };
 
 export default App;

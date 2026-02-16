@@ -1,7 +1,7 @@
-import AlignContentLayout from './components/AlignContentLayout';
+import FlexWrapLayout from './components/FlexWrapLayout';
 
 const App = () => {
-  return <AlignContentLayout />;
+  return <FlexWrapLayout />;
 };
 
 export default App;

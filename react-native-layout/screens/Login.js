@@ -20,7 +20,7 @@ const Login = ({ onNavigate }) => {
                 </View>
 
                 <Text style={styles.title}>Log In</Text>
-                <Text style={styles.subtitle}>Pleae enter your credentials</Text>
+                <Text style={styles.subtitle}>Please enter your credentials</Text>
 
 
                 <View style={styles.inputContainer}>

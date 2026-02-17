@@ -1,25 +1,33 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, SafeAreaView, Dimensions } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 
-const Login = ({ onNavigate }) => {
-    // State for password visibility
-    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+const Signup = ({ onNavigate }) => {
+
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.content}>
-                
-                {/* Game-style Image Container */}
+            <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+
                 <View style={styles.imageWrapper}>
                     <Image
                         source={require('../assets/login.png')}
                         style={styles.image}
                         resizeMode="contain"
                     />
+
                 </View>
 
-                <Text style={styles.title}>Log In</Text>
-                <Text style={styles.subtitle}>Pleae enter your credentials</Text>
+                <Text style={styles.title}>Let's create your account</Text>
+                <Text style={styles.subtitle}>Please enter your details</Text>
+
+                {/* Name Input */}
+                <View style={styles.inputContainer}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="USERNAME"
+                        placeholderTextColor="#999"
+                    />
+                </View>
 
                 {/* Email Input */}
                 <View style={styles.inputContainer}>
@@ -31,34 +39,36 @@ const Login = ({ onNavigate }) => {
                     />
                 </View>
 
-                {/* Password Input with Eye Button */}
+                {/* Password Input with Eye */}
                 <View style={styles.inputContainer}>
                     <TextInput
                         style={styles.input}
-                        placeholder="PASSWORD"
+                        placeholder="ENTER PASSWORD"
                         placeholderTextColor="#999"
-                        secureTextEntry={!isPasswordVisible}
                     />
-                    <TouchableOpacity 
-                        onPress={() => setIsPasswordVisible(!isPasswordVisible)}
-                        style={styles.eyeIcon}
-                    >
-                      
-                    </TouchableOpacity>
+                    {}
                 </View>
 
-                {/* Game Styled Button (Yellow like the lock icon) */}
+                <View style={styles.inputContainer}>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="CONFIRM PASSWORD"
+                        placeholderTextColor="#999"
+                    />
+                </View>
+
                 <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Log In</Text>
+                    <Text style={styles.buttonText}>Create Account</Text>
                 </TouchableOpacity>
 
                 <View style={styles.footer}>
-                    <Text style={styles.footerText}>Don't have an account? </Text>
+                    <Text style={styles.footerText}>Already have an ? </Text>
                     <TouchableOpacity onPress={onNavigate}>
-                        <Text style={styles.link}>Sign Up</Text>
+                        <Text style={styles.link}>Log In</Text>
                     </TouchableOpacity>
                 </View>
-            </View>
+
+            </ScrollView>
         </SafeAreaView>
     );
 };
@@ -68,10 +78,9 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff', 
     },
-    content: {
-        flex: 1,
-        paddingHorizontal: 100, 
-        justifyContent: 'center',
+    scrollContent: {
+        paddingHorizontal: 50,
+        paddingVertical: 100,
         alignItems: 'center',
     },
     imageWrapper: {
@@ -87,25 +96,23 @@ const styles = StyleSheet.create({
         elevation: 10,
     },
     image: {
-        width: 150,
-        height: 150,
+        width: 120,
+        height: 120,
     },
+
     title: {
-        fontSize: 32,
+        fontSize: 25,
         fontWeight: '900',
-        color: '#079fdb', 
-        textShadowColor: 'rgba(0, 0, 0, 0.1)',
-        textShadowOffset: { width: 2, height: 2 },
-        textShadowRadius: 1,
+        color: '#038bc1', 
+        letterSpacing: 1,
         marginBottom: 5,
     },
     subtitle: {
-        paddingTop: 5,
         fontSize: 14,
         fontWeight: 'bold',
         color: '#969899',
-        marginBottom: 30,
-        textTransform: 'uppercase', 
+        marginBottom: 25,
+
     },
     inputContainer: {
         flexDirection: 'row',
@@ -120,16 +127,11 @@ const styles = StyleSheet.create({
         height: 55,
     },
 
-
     input: {
         flex: 1,
         height: '100%',
         fontWeight: 'bold',
         color: '#333',
-
-    },
-    eyeIcon: {
-        padding: 5,
     },
     button: {
         backgroundColor: '#079fdb', 
@@ -145,16 +147,14 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: '#fff',
-        fontSize: 22,
+        fontSize: 20,
         fontWeight: '900',
-        letterSpacing: 2,
-        textShadowColor: 'rgba(0, 0, 0, 0.3)',
-        textShadowOffset: { width: 1, height: 1 },
-        textShadowRadius: 2,
+        letterSpacing: 1,
     },
     footer: {
         flexDirection: 'row',
         marginTop: 25,
+        marginBottom: 30,
     },
     footerText: {
         fontWeight: 'bold',
@@ -167,4 +167,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Login;
+export default Signup;

@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, SafeAreaView, Dimensions } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 const Login = ({ onNavigate }) => {
-    // State for password visibility
+ 
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
                 
-                {/* Game-style Image Container */}
+
                 <View style={styles.imageWrapper}>
                     <Image
                         source={require('../assets/login.png')}
@@ -21,8 +22,9 @@ const Login = ({ onNavigate }) => {
                 <Text style={styles.title}>Log In</Text>
                 <Text style={styles.subtitle}>Pleae enter your credentials</Text>
 
-                {/* Email Input */}
+
                 <View style={styles.inputContainer}>
+                    <Ionicons name="mail" size={24} color="#99d8f0" style={styles.icon} />
                     <TextInput
                         style={styles.input}
                         placeholder="EMAIL"
@@ -33,6 +35,7 @@ const Login = ({ onNavigate }) => {
 
                 {/* Password Input with Eye Button */}
                 <View style={styles.inputContainer}>
+                    <Ionicons name="lock-closed" size={24} color="#99d8f0" style={styles.icon} />
                     <TextInput
                         style={styles.input}
                         placeholder="PASSWORD"
@@ -43,7 +46,11 @@ const Login = ({ onNavigate }) => {
                         onPress={() => setIsPasswordVisible(!isPasswordVisible)}
                         style={styles.eyeIcon}
                     >
-                      
+                        <Ionicons 
+                            name={isPasswordVisible ? "eye-off" : "eye"} 
+                            size={24} 
+                            color="#99d8f0" 
+                        />
                     </TouchableOpacity>
                 </View>
 
@@ -120,6 +127,9 @@ const styles = StyleSheet.create({
         height: 55,
     },
 
+    icon: {
+        marginRight: 10,
+    },
 
     input: {
         flex: 1,

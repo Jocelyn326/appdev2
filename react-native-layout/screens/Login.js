@@ -33,7 +33,6 @@ const Login = ({ onNavigate }) => {
                     />
                 </View>
 
-                {/* Password Input with Eye Button */}
                 <View style={styles.inputContainer}>
                     <Ionicons name="lock-closed" size={24} color="#99d8f0" style={styles.icon} />
                     <TextInput
@@ -54,7 +53,6 @@ const Login = ({ onNavigate }) => {
                     </TouchableOpacity>
                 </View>
 
-                {/* Game Styled Button (Yellow like the lock icon) */}
                 <TouchableOpacity style={styles.button}>
                     <Text style={styles.buttonText}>Log In</Text>
                 </TouchableOpacity>

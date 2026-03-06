@@ -4,9 +4,16 @@ import Signup from './screens/Signup';
 import Todo from './screens/Todo';
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState('Todo');
+  const [currentScreen, setCurrentScreen] = useState('Login');
 
-  if (currentScreen === 'Todo') return <Todo />;
-  if (currentScreen === 'Signup') return <Signup onNavigate={() => setCurrentScreen('Login')} />;
-  return <Login onNavigate={() => setCurrentScreen('Signup')} />;
+  return currentScreen === 'Login' ? (
+    <Login 
+      onNavigate={() => setCurrentScreen('Signup')} 
+      onLogin={() => setCurrentScreen('Todo')} 
+    />
+  ) : currentScreen === 'Signup' ? (
+    <Signup onNavigate={() => setCurrentScreen('Login')} />
+  ) : (
+    <Todo onNavigate={() => setCurrentScreen('Login')} />
+  );
 }

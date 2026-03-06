@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, SafeAreaView, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-const Login = ({ onNavigate }) => {
+const Login = ({ onNavigate, onLogin }) => {
  
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -53,7 +53,7 @@ const Login = ({ onNavigate }) => {
                     </TouchableOpacity>
                 </View>
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity style={styles.button} onPress={onLogin}>
                     <Text style={styles.buttonText}>Log In</Text>
                 </TouchableOpacity>
 

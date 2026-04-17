@@ -1,31 +1,30 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { Text, View } from 'react-native';
+import {
+  createStaticNavigation,
+  useNavigation,
+} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Button } from '@react-navigation/elements'
+import { Button } from '@react-navigation/elements';
 
-
-// ---------------- SCREENS ----------------
 function SettingsScreen({ route }: any) {
   const { userId } = route.params;
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Settings Screen</Text>
-      <Text>User ID: {userId}</Text>
+      <Text>User ID: {JSON.stringify(userId)}</Text>
     </View>
   );
 }
 
-
 function HomeScreen() {
   const navigation = useNavigation<any>();
-  
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <Text>Home Screen</Text>
-
+      <Text>Home Screen</Text>
       <Button
         onPress={() =>
           navigation.navigate('More', {
@@ -34,10 +33,9 @@ function HomeScreen() {
           })
         }
       >
-
-        Go to Setting
+        Go to Settings
       </Button>
-      </View>
+    </View>
   );
 }
 
@@ -49,26 +47,22 @@ function ProfileScreen() {
   );
 }
 
-// ---------------- NAVIGATORS ----------------
-const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
+const MoreStack = createNativeStackNavigator({
+  screens: {
+    Settings: SettingsScreen,
+    Profile: ProfileScreen,
+  },
+});
 
-function MoreStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Settings" component={SettingsScreen} />
-      <Stack.Screen name="Profile" component={ProfileScreen} />
-    </Stack.Navigator>
-  );
-}
+const RootTabs = createBottomTabNavigator({
+  screens: {
+    Home: HomeScreen,
+    More: MoreStack,
+  },
+});
+
+const Navigation = createStaticNavigation(RootTabs);
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="More" component={MoreStack} />
-      </Tab.Navigator>
-    </NavigationContainer>
-  );
+  return <Navigation />;
 }

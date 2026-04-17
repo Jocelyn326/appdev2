@@ -4,7 +4,7 @@ import {
   createStaticNavigation,
   useNavigation,
  } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Button } from '@react-navigation/elements'
 
 
@@ -21,10 +21,21 @@ function HomeScreen() {
   );
 }
 
+type RootStackParamList = {
+  Home: undefined;
+  Details: undefined;
+};
+
 function DetailsScreen() {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>    
+      <Text>Details Screen</Text>
+      <Button onPress={() => navigation.push('Details')}>
+        Go to Details... again
+      </Button>
+      <Button onPress={() => navigation.goBack()}>Go back</Button>
       </View>
   );
 }
@@ -33,10 +44,6 @@ function DetailsScreen() {
 const RootStack = createNativeStackNavigator({
   
   initialRouteName: 'Home',
-  screenOptions: {
-    headerStyle: { backgroundColor: 'tomato' },
-  },
-  
   screens: {
     Home: HomeScreen,
     Details: DetailsScreen,

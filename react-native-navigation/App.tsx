@@ -66,3 +66,4 @@ const Navigation = createStaticNavigation(RootTabs);
 export default function App() {
   return <Navigation />;
 }
+ 

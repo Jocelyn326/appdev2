@@ -39,3 +39,11 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# nested projects
+react-native-flexbox/
+react-native-getting-started/
+react-native-layout/
+react-native-ui-n-interaction/
+rn-navigation-blank/
+01_course_retrospective.md

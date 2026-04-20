@@ -1,53 +1,48 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import { createStaticNavigation, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Button } from '@react-navigation/elements';
 
-function HomeScreen() {
+function HomeScreen({ route }: any) {
   const navigation = useNavigation<any>();
+
+  React.useEffect(() => {
+    if (route.params?.post) {
+      alert('New post: ' + route.params?.post);
+    }
+  }, [route.params?.post]);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button
-        onPress={() => navigation.navigate('Details', {
-          itemId: 86,
-          otherParam: 'anything you want here',
-        })}
-      >
-        Go to Details
-      </Button>
+      <Button onPress={() => navigation.navigate('CreatePost')}>Create post</Button>
+      <Text style={{ margin: 10 }}>Post: {route.params?.post}</Text>
     </View>
   );
 }
 
-function DetailsScreen({ route }: any) {
+function CreatePostScreen({ route }: any) {
   const navigation = useNavigation<any>();
-  const { itemId, otherParam } = route.params;
+  const [postText, setPostText] = React.useState('');
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-      <Text>itemId: {JSON.stringify(itemId)}</Text>
-      <Text>otherParam: {JSON.stringify(otherParam)}</Text>
-      <Button onPress={() => navigation.push('Details', { itemId: Math.floor(Math.random() * 100) })}>
-        Go to Details... again
-      </Button>
-      <Button onPress={() => navigation.setParams({ itemId: Math.floor(Math.random() * 100) })}>
-        Update itemId
-      </Button>
-    </View>
+    <>
+      <TextInput
+        multiline
+        placeholder="What's on your mind?"
+        style={{ height: 200, padding: 10, backgroundColor: 'white' }}
+        value={postText}
+        onChangeText={setPostText}
+      />
+      <Button onPress={() => navigation.popTo('Home', { post: postText })}>Done</Button>
+    </>
   );
 }
 
 const RootStack = createNativeStackNavigator({
   screens: {
     Home: HomeScreen,
-    Details: {
-      screen: DetailsScreen,
-      initialParams: { itemId: 42 },
-    },
+    CreatePost: CreatePostScreen,
   },
 });
 

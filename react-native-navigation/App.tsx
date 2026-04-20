@@ -34,6 +34,9 @@ function DetailsScreen({ route }: any) {
       <Button onPress={() => navigation.push('Details', { itemId: Math.floor(Math.random() * 100) })}>
         Go to Details... again
       </Button>
+      <Button onPress={() => navigation.setParams({ itemId: Math.floor(Math.random() * 100) })}>
+        Update itemId
+      </Button>
     </View>
   );
 }

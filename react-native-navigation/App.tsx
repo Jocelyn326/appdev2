@@ -5,10 +5,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Button } from '@react-navigation/elements';
 
 function HomeScreen() {
+  const navigation = useNavigation<any>();
+
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       <Text>Home Screen</Text>
-      <Button screen="Details" params={{}}>Go to Details</Button>
+      <Button onPress={() => navigation.navigate('Details')}>Go to Details</Button>
     </View>
   );
 }
